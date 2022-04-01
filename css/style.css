@@ -118,18 +118,12 @@ body {
     padding: 0;
     padding-top: 100px;
     
-    
-    
-    
-    
+       
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--card_width));
     grid-auto-rows: var(--row_increment);
     justify-content: center;
     
-    /* grid-template-rows: repeat(6, 1fr);
-    grid-auto-flow: column;
-    grid-auto-columns: -25%; */
 }
 
 .card-image {
@@ -142,7 +136,6 @@ body {
 
 .card-image:hover {
     filter: opacity(0.9);
-
 }
 
 .card_small {
@@ -183,6 +176,8 @@ body {
     bottom: 95%;
 
     border-radius: 25px;
+
+    display: none;
 }
 
 .btn-save:hover {
@@ -193,9 +188,10 @@ body {
     position: relative;
     width: 30px;
 
-
     left: 80%;
     bottom: 25%;
+
+    display: none;
 }
 .btn-share:hover {
     background-color: #E1E1E1;
@@ -208,6 +204,7 @@ body {
     bottom: 33%;
     position: relative;
     width: 30px;
+    display: none;
 }
 
 .btn-dot:hover {
@@ -237,3 +234,14 @@ body {
     bottom: 60%;
 }
 
+.card-image:hover .btn-save {
+    display: flex;
+}
+.card-image:hover .btn-dot {
+    display: block;
+}
+.card-image:hover .btn-share {
+    display: block;
+}
+
+    
