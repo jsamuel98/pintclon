@@ -1,0 +1,239 @@
+:root {
+    --card_width: 250px;
+    --row_increment: 10px;
+    --card_border_radius: 16px;
+    --card-small: 26;
+    --card_medium: 33;
+    --card_large: 45;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+#navbar-pinterest { /* El navbar siempre debe de estar en el top de la aplicación */
+    height: 80px; /*Altura del navbar*/
+    font-size: 20px; /*tamaño de fuente de 20px para el nav*/
+    
+    display: flex; /*Me permite darle los atributos de flexbox a mi nav, para asi poderlos colocarlos al mismo nivel */
+    flex-direction: row; /* Especifico que quiero mis elementos de manera horizontal*/
+    /* flex-wrap: wrap;  */ 
+
+    justify-content: space-around; /*los centro horizontalmente*/
+    align-items: center; /*coloco los items centrados verticalmente*/
+    
+    background-color: white;
+
+    position: fixed; /*con esto le indico que quiero que se mantenga mi nav al tope de la pagina. Es importante ajustar el width al 100. */
+    width: 100%; /*El width se coloca para que el nav abarque el ancho de la pantalla al 100%, ya que el position fixed lo modifica al espacio que usan los elementos */
+    
+    z-index: 5; /*Le doy el valor mas alto a mi nav, con esto las imagenes no van a pasar por arriba de el */
+    
+    border-bottom: 1px solid #E1E1E1; /*borde visual inferior del nav*/
+}
+.box-ico { /*este es la clase que use en los div y sirve para darle sombras a los elementos de texto de mi nav */
+    display: flex; /*doy propiedades de padre para acomodar a los elementos hijo */
+    align-items: center; /*centra verticalmente*/
+    justify-content: center; /*centra horizontalmente*/
+    border-radius: 18px; /*quiero un borde-radio de 18px*/
+    height: 40px; 
+    width: 40px;
+}
+.box-ico:hover { /*de la clase anterior, la pseudoclase hover sirve para activar una propiedad cuando se pasa por encima del elemento con la clase*/
+    background-color: #E1E1E1;
+}
+#pinterest-icon { /*ID para mi logo de pinterest del nav*/
+    padding-top: 4px; /*padding top lo use para centrarlo mejor, ya que quedaba aun muy arriba */
+    width: 30px; /*tamaño de 30px de mi logo */
+}
+#home, #today { /*a las ID de los botones inicio y hoy se les aplico lo siguiente */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+    height: 50px; /*altura de 50px para abarcar cerrar el texto*/
+    padding: 0 16px; /*en pinterest los botones tienen un padding lateral de 16px */
+    border-radius: 25px; /* le da un efecto totalmente redondo, igual funcionaria al 50% */
+}
+#home, #today, #notifications, #messages, #profile-img:hover { /*como son elementos div con span no tienen propiedades de cursor pointer, asi que se las modifique */
+    cursor: pointer;
+}
+#home { /* propiedades del boton inicio, fondo negro y color de texto blanco */
+    background-color: black;
+    color: #FFFFFF;
+}
+#today:hover { /*al boton hoy al pasar el cursor por encima se le aplica el color de fondo gris */
+    background-color: #E1E1E1;
+}
+.box-finder { /* div que contiene al input y a la imagen de la lupa de buscar */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; /*no tengo idea si realmente sirva despues de unas horas de haberlo colacado */
+    
+    background-color: #E1E1E1; /*color de fondo de la caja que contiene al input de buscar */
+    
+    margin: 0 8px; /*margenes laterales de 8 px a los elementos botones de los lados */
+    
+    width: 50%; /*le indico que quiero que el nav sea proporcional al 50% del ancho de la pagina */
+    height: 48px; /*manten la altura de 48px en la caja del finder */
+    border-radius: 25px; /*border radius de 25px, para redondear mi caja que contiene a mi input */
+}
+.ico-finder { /*clase para mi icono de buscar en la caja de finder */
+    margin-left: 10px; /*margen a la izquierda de 10px respecto a mi caja */
+    width: 16px;
+}
+.finder { /*esta es la clase de mi input */
+    background-color: #E1E1E1;    
+    
+    width: 85%; /*85% de ancho en relacion a mi caja padre */
+    height: 40px;
+    margin-right: 10px; /*margen a la derecha de 10px respecto a la caja de finder */
+    
+    border-radius: 25px;
+    border: none;
+}
+.finder:focus-visible { /*le quito el efecto de borde visible al input cuando es seleccionado*/
+    outline: none;
+}
+#notifications, #messages {
+    margin: 4px;
+    width: 30px;
+}
+#profile-img img {
+    width: 40px;
+    border-radius: 50%;
+}
+.nav-ico30 { /*ajusto el tamaño de los iconos del nav a 30px */
+    width: 30px;
+}
+
+
+#content {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    padding-top: 100px;
+    
+    
+    
+    
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card_width));
+    grid-auto-rows: var(--row_increment);
+    justify-content: center;
+    
+    /* grid-template-rows: repeat(6, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: -25%; */
+}
+
+.card-image {
+    background-color: lightgray;
+    padding: 0;
+    margin: 15px 10px; 
+    border-radius: var(--card_border_radius);
+    cursor:zoom-in;
+}
+
+.card-image:hover {
+    filter: opacity(0.9);
+
+}
+
+.card_small {
+    grid-row-end: span var(--card-small);
+}
+
+.card_medium {
+    grid-row-end: span var(--card_medium);
+}
+
+.card_large {
+    grid-row-end: span var(--card_large);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--card_border_radius);
+}
+
+.btn-save {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    height: 50px;
+    width: 80px;
+    
+    background-color:crimson;
+    color: white;
+    font-size: 14px;
+    
+    
+    left: 60%;
+    bottom: 95%;
+
+    border-radius: 25px;
+}
+
+.btn-save:hover {
+    cursor: pointer;
+}
+
+.btn-share {
+    position: relative;
+    width: 30px;
+
+
+    left: 80%;
+    bottom: 25%;
+}
+.btn-share:hover {
+    background-color: #E1E1E1;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.btn-dot {
+    left: 60%;
+    bottom: 33%;
+    position: relative;
+    width: 30px;
+}
+
+.btn-dot:hover {
+    background-color: #E1E1E1;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+
+.card_medium .btn-share {
+    left: 80%;
+    bottom: 35%;
+}
+
+.card_medium .btn-dot {
+    left: 60%;
+    bottom: 46%;
+}
+
+.card_small .btn-share {
+    left: 80%;
+    bottom: 45%;
+}
+
+.card_small .btn-dot {
+    left: 60%;
+    bottom: 60%;
+}
+
